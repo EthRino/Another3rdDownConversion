@@ -1,34 +1,15 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    padding: 40px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
 }
 
 button {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
     padding: 10px 20px;
+    margin: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #2980b9;
+p {
+    font-size: 20px;
 }
-
-div {
-    margin-top: 25px;
-}
-
-#greeting {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.visible {
-    opacity: 1;
-}
-    
