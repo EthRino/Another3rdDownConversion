@@ -1,33 +1,26 @@
-// Compute the value at a given quantile
 function computeQuantile(array, quantile) {
-    array.sort((a, b) => a - b);
-    let index = Math.ceil(quantile * array.length) - 1;
-    return array[index];
+    if(!Array.isArray(array) || array.length === 0) return null;
+
+    let sorted = [...array].sort((a, b) => a - b);
+    let index = (quantile * (sorted.length - 1) + 1) | 0;
+    let frac = (quantile * (sorted.length - 1) + 1) % 1;
+
+    if (sorted[index + 1] !== undefined) {
+        return sorted[index] + frac * (sorted[index + 1] - sorted[index]);
+    } else {
+        return sorted[index];
+    }
 }
 
 function computeAndDisplayQuantile() {
-    let array = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
-    let quantileValue = 0.95;
-    let result = computeQuantile(array, quantileValue);
-
-    let greetingElement = document.getElementById('greeting');
-    greetingElement.innerHTML = "The " + (quantileValue * 100) + "th percentile is: " + result;
-
-    // Add the 'visible' class to make the greeting fade in
-    greetingElement.classList.add('visible');
+    let sampleData = [1, 5, 7, 9, 12, 15, 16, 19, 20, 24, 25, 28, 30];
+    let quantileValue = computeQuantile(sampleData, 0.95);
+    
+    document.getElementById('result').innerText = `The 95th percentile value is: ${quantileValue}`;
 }
 
-// Function to generate a random color
-function getRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
-// Function to change the background color of the page
 function changeBackground() {
-    document.body.style.backgroundColor = getRandomColor();
+    let colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A6', '#A633FF'];
+    let randomIndex = Math.floor(Math.random() * colors.length);
+    document.body.style.backgroundColor = colors[randomIndex];
 }
