@@ -4,28 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Another3rdDownConversion</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Your Cool Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- Greeting Section -->
-    <div>
-        <label for="nameInput">What's your name?</label>
-        <input type="text" id="nameInput">
-        <button onclick="updateGreeting()">Greet Me</button>
-    </div>
-    
-    <div id="greeting">
-        Hello! Please enter your name above.
-    </div>
-    
-    <!-- Compute Quantile Section -->
-    <button onclick="displayQuantile()">Compute 50th Percentile</button>
-    <div id="quantileResult"></div>
+    <h1>Welcome to My Cool Website</h1>
 
-    <script src="script.js"></script>
+    <button onclick="computeAndDisplayQuantile()">Click Me!</button>
+    
+    <p id="greeting" class="hidden">This text will change!</p>
+
+    <button onclick="changeBackground()">Change Background Color</button>
+
+    <!-- Optional: include a footer or any other content you want -->
+
 </body>
 
 </html>
