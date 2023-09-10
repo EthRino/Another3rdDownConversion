@@ -1,40 +1,33 @@
-// Function to update the greeting
-function updateGreeting() {
-    const name = document.getElementById('nameInput').value;
-    const greeting = document.getElementById('greeting');
-
-    if (name) {
-        greeting.textContent = `Hello, ${name}! Welcome to Another3rdDownConversion.`;
-    } else {
-        greeting.textContent = 'Hello! Please enter your name above.';
-    }
+// Compute the value at a given quantile
+function computeQuantile(array, quantile) {
+    array.sort((a, b) => a - b);
+    let index = Math.ceil(quantile * array.length) - 1;
+    return array[index];
 }
 
-// Function to compute the quantile for an array
-function computeQuantile(arr, quantile) {
-    // First, sort the array
-    const sortedArr = arr.sort((a, b) => a - b);
-    
-    // Compute position
-    const pos = (sortedArr.length - 1) * quantile;
-    const base = Math.floor(pos);
-    const rest = pos - base;
+function computeAndDisplayQuantile() {
+    let array = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+    let quantileValue = 0.95;
+    let result = computeQuantile(array, quantileValue);
 
-    if (sortedArr[base + 1] !== undefined) {
-        return sortedArr[base] + rest * (sortedArr[base + 1] - sortedArr[base]);
-    } else {
-        return sortedArr[base];
-    }
+    let greetingElement = document.getElementById('greeting');
+    greetingElement.innerHTML = "The " + (quantileValue * 100) + "th percentile is: " + result;
+
+    // Add the 'visible' class to make the greeting fade in
+    greetingElement.classList.add('visible');
 }
 
-// Function to display the computed quantile
-function displayQuantile() {
-    // Sample data
-    const dummyData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// Function to generate a random color
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
-    // Compute 50th percentile (median)
-    const result = computeQuantile(dummyData, 0.5);
-
-    // Display the result
-    document.getElementById('quantileResult').innerText = `The 50th percentile is: ${result}`;
+// Function to change the background color of the page
+function changeBackground() {
+    document.body.style.backgroundColor = getRandomColor();
 }
